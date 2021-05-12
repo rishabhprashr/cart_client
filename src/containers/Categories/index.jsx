@@ -1,31 +1,37 @@
 import React from 'react';
+import {useEffect,useState} from 'react';
 
+function Categories() {
 
-class Categories extends React.Component {
-  state = {
-    categories: null,
-  }
+  const [categories,setCategory] = useState();
 
-  UNSAFE_componentWillMount() {
-    this.setState({categories: [
-      "One",
-      "Two",
-      "Three"
-    ]})
-  }
+  useEffect (() => {
+    fetchCategories();
+  },[]);
 
-  render () {
-    const { categories } = this.state;
-    return(
-      <div>
-        {categories?.map((category) =>
-          <div>{category}</div>
-        )}
-      </div>
+  const fetchCategories = async () =>{
+    const data = await fetch(
+      'http://localhost:3000/api/categories'
     );
+    const categories = await data.json();
+    setCategory(categories);
+    console.log(categories);
 
 
-  }
+  };
+
+
+  return (
+    <div>
+      
+      {categories?.map((category) =>
+          <div>{category.name}</div>
+        )}
+      
+    </div>
+  )
 }
+
+
 
 export default Categories;
