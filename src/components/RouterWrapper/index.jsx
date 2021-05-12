@@ -6,7 +6,7 @@ import {
   PRODUCTS
 } from '../../routes';
 import Categories from '../../containers/Categories';
-import Products from '../../containers/Categories/Products';
+import Products from '../../containers/Products';
 
 class RouterWrapper extends React.Component {
 
