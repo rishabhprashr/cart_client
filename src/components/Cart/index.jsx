@@ -1,10 +1,8 @@
 import React from 'react';
-import { get }  from './../../axios';
 import {useEffect,useState} from 'react';
-import {CATEGORIES} from './../../routes';
-import Category from './../../components/Category';
+import {get,post} from './../../axios';
 
-function Categories() {
+function Cart() {
 
   const [categories,setCategory] = useState();
 
@@ -37,3 +35,5 @@ function Categories() {
 
 
 export default Categories;
+
+export default Cart;
