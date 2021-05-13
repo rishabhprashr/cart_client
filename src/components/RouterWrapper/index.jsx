@@ -3,10 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   ROOT_PATH,
   CATEGORIES,
-  PRODUCTS
+  PRODUCTS,
+  PRODUCT
 } from '../../routes';
 import Categories from '../../containers/Categories';
 import Products from '../../containers/Products';
+import ProductDetail from './../../components/ProductDetail';
+// import Product from '../ProductDetail';
 
 class RouterWrapper extends React.Component {
 
@@ -21,6 +24,7 @@ class RouterWrapper extends React.Component {
           )}/>
           <Route exact path={CATEGORIES} component={Categories}/>
           <Route exact path={PRODUCTS} component={Products}/>
+          <Route exact path={PRODUCT} component={ProductDetail}/>
           
         </Switch>
       </Router>
