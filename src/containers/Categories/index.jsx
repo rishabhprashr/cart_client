@@ -1,5 +1,8 @@
 import React from 'react';
+import { get }  from './../../axios';
 import {useEffect,useState} from 'react';
+import {CATEGORIES} from './../../routes';
+import Category from './../../components/Category';
 
 function Categories() {
 
@@ -10,12 +13,10 @@ function Categories() {
   },[]);
 
   const fetchCategories = async () =>{
-    const data = await fetch(
-      'http://localhost:3000/api/categories'
-    );
-    const categories = await data.json();
-    setCategory(categories);
-    console.log(categories);
+    const data = await get(CATEGORIES);
+    // const categories = await data.json();
+    setCategory(data);
+    console.log(data);
 
 
   };
@@ -24,8 +25,11 @@ function Categories() {
   return (
     <div>
       
-      {categories?.map((category) =>
+      {/* {categories?.map((category) =>
           <div>{category.name}</div>
+        )} */}
+        {categories?.map((category) =>
+          <Category key={`category-${category.id}`} category={category}/>
         )}
       
     </div>
