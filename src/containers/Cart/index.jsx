@@ -7,7 +7,7 @@ import "./index.css";
 function Carts() {
 
   const [cart,setCart] = useState([]);
-  // const [quantity,setQuantity] = useState(0);
+  const [price,setPrice] = useState([]);
 
   useEffect (() => {
     fetchCart();
@@ -18,7 +18,8 @@ function Carts() {
     // const categories = await data.json();
     console.log(data);
     try{
-      setCart(data);
+      setCart(data.data);
+      setPrice(data.totalPrice);
     }catch(e){
       console.log(e);
     }
@@ -58,14 +59,23 @@ function Carts() {
           <tr>
             <td>{cart_items.product.name}</td>
             <td>{cart_items.product.price}</td>
-            {/* <td>{cart_items.quantity}</td> */}
             <td>
               <input type="number" defaultValue={cart_items.quantity} id={cart_items.id} onChange={(e)=>handleChange(e,cart_items) }/>
             </td>
             <td>{cart_items.price}</td>
+            {/* {setPrice(price+cart_items.price)} */}
           </tr>
+          
         </React.Fragment>
+
+
       )}
+      <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>{price}</td>
+          </tr>
       </table>
       </form>
     </div>
