@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6MiwiZXhwIjoxNjIzMzA2OTA2fQ.Cjho9n7NXLM5OX1JfFqNQMQlC0PvTxDYsojYBk5hT_b6ZV0Lx7_gnCENP22mHdiEnn12vHCR51IruuG-1Sn2PA";
+const token = "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6MzgsImV4cCI6MTYyMzUwMzgxOH0.uisr9nNY4EW7qFP5w3KCwr0OUOCgoIyCGUbsB0DAtaYT_7XRjq1jp5T-o-PcvDW5YHucH7BNP2WPLQFt9mlE7Q";
 const BASE_URL = `http://localhost:3000/api`;
 
 const getEndpoint = (url) => {
