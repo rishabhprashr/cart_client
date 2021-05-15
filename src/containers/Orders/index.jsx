@@ -2,6 +2,7 @@ import React from 'react';
 import {useEffect,useState} from 'react';
 import {get} from './../../axios';
 // import Order from './../../components/Order';
+import {ORDERS} from './../../routes';
 
 
 function Orders() {
@@ -14,7 +15,7 @@ function Orders() {
 
   const fetchOrders = async () => {
     try{
-      const res = await get(`/orders`);
+      const res = await get(ORDERS);
       console.log(res);
       setOrders(res);
     }catch(e){

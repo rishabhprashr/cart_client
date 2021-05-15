@@ -2,6 +2,7 @@ import React from 'react';
 import { get,post } from '../../axios';
 import {useEffect,useState} from 'react';
 import NotFound from './../Error';
+import {CART} from './../../routes';
 
 
 function ProductDetail() {
@@ -28,7 +29,7 @@ function ProductDetail() {
   const handleProduct = async () =>{
     console.log(product);
     const data = {"product_id":product.id,"quantity":1};
-    const res = await post('/cart_items',data);
+    const res = await post(CART,data);
     console.log(res);
 
   }

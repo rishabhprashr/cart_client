@@ -1,8 +1,8 @@
 import React from 'react';
 import {useEffect,useState} from 'react';
 import {get,post,put,destroy} from './../../axios';
-import Cart from './../../components/Cart';
-import "./index.css";
+// import Cart from './../../components/Cart';
+import {CART,ORDERS} from './../../routes';
 
 function Carts() {
 
@@ -18,7 +18,7 @@ function Carts() {
     // const categories = await data.json();
     // console.log(data);
     try{
-      const data = await get('/cart_items');
+      const data = await get(CART);
       setCart(data.data);
       setPrice(data.totalPrice);
     }catch(e){
@@ -53,7 +53,7 @@ function Carts() {
 
   const handleOrder = async (e) => {
     try{
-      const res = await post(`/orders`);
+      const res = await post(ORDERS);
       console.log(res);
     }catch(e){
       console.log(e);
@@ -76,8 +76,8 @@ function Carts() {
           <td>Total price</td>
         </tr>
       {cart?.map((cart_items) => 
-        <React.Fragment>
-          <tr>
+        
+          <tr key={cart_items.id}>
             <td>{cart_items.product.name}</td>
             <td>${cart_items.product.price}</td>
             <td>
@@ -91,10 +91,6 @@ function Carts() {
 
             {/* {setPrice(price+cart_items.price)} */}
           </tr>
-          
-        </React.Fragment>
-
-
       )}
       <tr>
             <td></td>
