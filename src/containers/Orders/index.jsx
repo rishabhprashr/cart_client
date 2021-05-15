@@ -1,7 +1,7 @@
 import React from 'react';
 import {useEffect,useState} from 'react';
 import {get} from './../../axios';
-import Order from './../../components/Order';
+// import Order from './../../components/Order';
 
 
 function Orders() {
@@ -25,24 +25,14 @@ function Orders() {
 
   return (
     <div>
-      {orders?.map((order) =>
-          
-          <React.Fragment>
-            {/* {console.log(`new ${order}`)} */}
-            <div>
-              
-              <a href={`/orders/${order.id}`}>{order.invoice_no}-{order.totalPrice}</a>
-              {/* <div>
-                {order.items.map((item) =>
-                item.product.name
-                )}</div>
-                <Order key={`order-${order.id}`} order={order.items}/> */}
-            </div>
-          
-          </React.Fragment>
-      
-        )}
-      
+      <h2>Orders</h2>
+      {orders?.map((order,index) =>
+      <div key={order.invoice_no}>
+        <span>{index+1} </span>
+        <a href={`/orders/${order.id}`}>{order.invoice_no}</a>
+        <h4>Ordered at:  {order.created_at}</h4>
+      </div>
+      )}
     </div>
   )
 }

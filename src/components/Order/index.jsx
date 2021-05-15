@@ -36,8 +36,8 @@ function Order() {
             <td>Price</td>
             <td>Total Price</td>
           </tr>
-          {order?.items.map((item) =>
-            <tr>
+          {order?.items.map((item,index) =>
+            <tr key={index}>
               <td>{item.product.name}</td>
               <td>{item.quantity}</td>
               <td>{item.product.price}</td>
