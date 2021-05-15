@@ -31,8 +31,8 @@ export const post = (url, data) => {
   return axios.post(endpoint, data, header).then(responseData);
 }
 
-export const destroy = (url, data) => {
+export const destroy = (url) => {
   const endpoint = getEndpoint(url);
   const header = getHeaders();
-  return axios.delete(endpoint,data, header).then(responseData);
+  return axios.delete(endpoint, header).then(responseData);
 }

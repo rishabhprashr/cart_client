@@ -1,6 +1,6 @@
 import React from 'react';
 import {useEffect,useState} from 'react';
-import {get,put} from './../../axios';
+import {get,put,destroy} from './../../axios';
 import Cart from './../../components/Cart';
 import "./index.css";
 
@@ -42,6 +42,14 @@ function Carts() {
 
   }
 
+  const handleRemove = async (e) => {
+    console.log(JSON.stringify(e));
+    const res =await destroy(`/cart_items/${e}`);
+    console.log(`delete response ${res}`);
+    fetchCart();
+    console.log(res);
+  }
+
 
   return (
 
@@ -63,6 +71,11 @@ function Carts() {
               <input type="number" defaultValue={cart_items.quantity} id={cart_items.id} onChange={(e)=>handleChange(e,cart_items) }/>
             </td>
             <td>{cart_items.price}</td>
+
+            {/* <td><button type="button" id={cart_items.id} onClick={()=>sendDeleteRequest()}>Remove</button></td> */}
+
+            <td><button type="button" id={cart_items.id} onClick={()=>handleRemove(cart_items.id)}>Remove</button></td>
+
             {/* {setPrice(price+cart_items.price)} */}
           </tr>
           
@@ -82,47 +95,8 @@ function Carts() {
 
       
 
-        
-
-        // <div className="shopping">
-        //   <div class="column-labels">
-        //     <label class="product-details">Product</label>
-        //     <label class="product-price">Price</label>
-        //     <label class="product-quantity">Quantity</label>
-        //     <label class="product-removal">Remove</label>
-        //     <label class="product-line-price">Total</label>
-        //   </div>
-
-        //   {cart?.map((cart_items) =>
-        //   // <Cart key={`cart_item-${cart_items.id}`} cart_items={cart_items}/>
-        //   <React.Fragment>
-        //     <div class="product">
-
-        //       <div class="product-details">
-        //         <div class="product-title">{cart_items.product.name}</div>
-        //       </div>
-        //       <div class="product-price">{cart_items.product.price}</div>
-        //       <div class="product-quantity">
-        //         <input type="number" value={cart_items.quantity} min="1"/>
-        //       </div>
-        //       <div class="product-removal">
-        //         <button class="remove-product">
-        //           Remove
-        //         </button>
-        //       </div>
-        //       <div class="product-line-price">{cart_items.price}</div>
-        //   </div>
-        //   </React.Fragment>
-
-          
-        // )}
-
-          
-        // </div>
 
 
-      
-   
   )
 }
 
