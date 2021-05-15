@@ -54,14 +54,15 @@ function Carts() {
   return (
 
     <div>
-      <form>
+      {price?
+      <React.Fragment>
       <table>
         <tr>
-            <td>Name</td>
-            <td>Price</td>
-            <td>Quantity</td>
-            <td>Total price</td>
-          </tr>
+          <td>Name</td>
+          <td>Price</td>
+          <td>Quantity</td>
+          <td>Total price</td>
+        </tr>
       {cart?.map((cart_items) => 
         <React.Fragment>
           <tr>
@@ -90,7 +91,9 @@ function Carts() {
             <td>{price}</td>
           </tr>
       </table>
-      </form>
+
+      </React.Fragment>:<h1>Cart Empty</h1>}
+
     </div>
 
       
