@@ -4,6 +4,7 @@ import {get} from './../../axios';
 
 function Order() {
   
+  // console.log(props);
   const [order,setOrder] = useState();
 
   useEffect (() => {

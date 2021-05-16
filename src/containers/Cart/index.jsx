@@ -1,5 +1,6 @@
 import React from 'react';
 import {useEffect,useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import {get,post,put,destroy} from './../../axios';
 // import Cart from './../../components/Cart';
 import {CART,ORDERS} from './../../routes';
@@ -8,6 +9,7 @@ function Carts() {
 
   const [cart,setCart] = useState([]);
   const [price,setPrice] = useState(0);
+  const history = useHistory();
 
   useEffect (() => {
     fetchCart();
@@ -54,7 +56,14 @@ function Carts() {
   const handleOrder = async (e) => {
     try{
       const res = await post(ORDERS);
-      console.log(res);
+      if (res.success){
+        history.push(`/orders/${res.order.id}`);
+
+      }
+      
+      // console.log(res.order.id);
+      
+      // <Order key={res.order.id} order={res.order.id}/>
     }catch(e){
       console.log(e);
     }
@@ -62,55 +71,55 @@ function Carts() {
   }
 
 
-  return (
+return (
 
-    <div>
-      {price?
-      <React.Fragment>
-      <table>
-        <tbody>
-        <tr>
-          <td>Name</td>
-          <td>Price</td>
-          <td>Quantity</td>
-          <td>Total price</td>
-        </tr>
-      {cart?.map((cart_items) => 
-        
-          <tr key={cart_items.id}>
-            <td>{cart_items.product.name}</td>
-            <td>${cart_items.product.price}</td>
-            <td>
-              <input type="number" defaultValue={cart_items.quantity} id={cart_items.id} onChange={(e)=>handleChange(e,cart_items) }/>
-            </td>
-            <td>${cart_items.price}</td>
-
-            {/* <td><button type="button" id={cart_items.id} onClick={()=>sendDeleteRequest()}>Remove</button></td> */}
-
-            <td><button type="button" id={cart_items.id} onClick={()=>handleRemove(cart_items.id)}>Remove</button></td>
-
-            {/* {setPrice(price+cart_items.price)} */}
-          </tr>
-      )}
+  <div>
+    {price?
+    <React.Fragment>
+    <table>
+      <tbody>
       <tr>
-            <td></td>
-            <td></td>
-            <td>Total Amount:</td>
-            <td>${price}</td>
-            <td><button type="button" onClick={()=>handleOrder()}>Place Order</button></td>
-          </tr>
-          </tbody>
-      </table>
-
-      </React.Fragment>:<h1>Cart Empty</h1>}
-
-    </div>
-
+        <td>Name</td>
+        <td>Price</td>
+        <td>Quantity</td>
+        <td>Total price</td>
+      </tr>
+    {cart?.map((cart_items) => 
       
+        <tr key={cart_items.id}>
+          <td>{cart_items.product.name}</td>
+          <td>${cart_items.product.price}</td>
+          <td>
+            <input type="number" defaultValue={cart_items.quantity} id={cart_items.id} onChange={(e)=>handleChange(e,cart_items) }/>
+          </td>
+          <td>${cart_items.price}</td>
+
+          {/* <td><button type="button" id={cart_items.id} onClick={()=>sendDeleteRequest()}>Remove</button></td> */}
+
+          <td><button type="button" id={cart_items.id} onClick={()=>handleRemove(cart_items.id)}>Remove</button></td>
+
+          {/* {setPrice(price+cart_items.price)} */}
+        </tr>
+    )}
+    <tr>
+          <td></td>
+          <td></td>
+          <td>Total Amount:</td>
+          <td>${price}</td>
+          <td><button type="button" onClick={()=>handleOrder()}>Order</button></td>
+        </tr>
+        </tbody>
+    </table>
+
+    </React.Fragment>:<h1>Cart Empty</h1>}
+
+  </div>
+
+    
 
 
 
-  )
+)
 }
 
 export default Carts;
