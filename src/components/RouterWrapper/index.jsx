@@ -7,7 +7,8 @@ import {
   PRODUCT,
   CART,
   ORDERS,
-  ORDER
+  ORDER,
+  LOGIN
 } from '../../routes';
 import Categories from '../../containers/Categories';
 import Products from '../../containers/Products';
@@ -16,6 +17,7 @@ import NotFound from './../Error';
 import Carts from './../../containers/Cart';
 import Orders from './../../containers/Orders';
 import Order from './../../components/Order';
+import Login from './../../components/Login';
 // import Product from '../ProductDetail';
 
 class RouterWrapper extends React.Component {
@@ -35,6 +37,7 @@ class RouterWrapper extends React.Component {
           <Route exact path={CART} component={Carts}/>
           <Route exact path={ORDERS} component={Orders}/>
           <Route exact path={ORDER} component={Order}/>
+          <Route exact path={LOGIN} component={Login}/>
           <Route path="*" component={NotFound}/>
           
         </Switch>

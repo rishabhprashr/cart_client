@@ -6,3 +6,4 @@ export const PRODUCT = '/categories/:category_id/products/:product_id';
 export const CART = '/cart_items';
 export const ORDERS = '/orders';
 export const ORDER = '/orders/:order_id';
+export const LOGIN = `/login`;

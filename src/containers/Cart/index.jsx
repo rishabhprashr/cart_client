@@ -32,11 +32,6 @@ function Carts() {
   }
 
   const handleChange = async (e,cart_items) =>{
-    // console.;
-    // debugger;
-    // console.log(e.target.value);
-    // console.log(cart_items.id);
-    // console.log(JSON.stringify(e));
   
     const data = {"product_id":cart_items.product.id,"quantity":e.target.value};
     const res = await put(`/cart_items/${cart_items.id}`,data);
@@ -58,12 +53,7 @@ function Carts() {
       const res = await post(ORDERS);
       if (res.success){
         history.push(`/orders/${res.order.id}`);
-
       }
-      
-      // console.log(res.order.id);
-      
-      // <Order key={res.order.id} order={res.order.id}/>
     }catch(e){
       console.log(e);
     }
