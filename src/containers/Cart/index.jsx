@@ -86,7 +86,7 @@ return (
 
           {/* <td><button type="button" id={cart_items.id} onClick={()=>sendDeleteRequest()}>Remove</button></td> */}
 
-          <td><button type="button" id={cart_items.id} onClick={()=>handleRemove(cart_items.id)}>Remove</button></td>
+          <td><button type="button" id={cart_items.id} onClick={()=>handleRemove(cart_items.id)}>X</button></td>
 
           {/* {setPrice(price+cart_items.price)} */}
         </tr>
