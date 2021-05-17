@@ -1,4 +1,4 @@
-nav{
+.nav{
   display:flex;
   justify-content: space-around;
   min-height: 10vh;
@@ -6,8 +6,12 @@ nav{
 
 }
 
-.cart{
-  background: gray;
-  color: black;
- 
+.navlinks{
+  width: 40%;
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  list-style: none;
 }
+
+
