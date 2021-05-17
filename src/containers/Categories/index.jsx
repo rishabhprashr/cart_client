@@ -1,31 +1,39 @@
 import React from 'react';
+import { get }  from './../../axios';
+import {useEffect,useState} from 'react';
+import {CATEGORIES} from './../../routes';
+import Category from './../../components/Category';
+
+function Categories() {
+
+  const [categories,setCategory] = useState();
+
+  useEffect (() => {
+    fetchCategories();
+  },[]);
+
+  const fetchCategories = async () =>{
+    const data = await get(CATEGORIES);
+    // const categories = await data.json();
+    setCategory(data);
+    console.log(data);
 
 
-class Categories extends React.Component {
-  state = {
-    categories: null,
-  }
+  };
 
-  UNSAFE_componentWillMount() {
-    this.setState({categories: [
-      "One",
-      "Two",
-      "Three"
-    ]})
-  }
 
-  render () {
-    const { categories } = this.state;
-    return(
-      <div>
+  return (
+    <div>
+      
+
         {categories?.map((category) =>
-          <div>{category}</div>
+          <Category key={`category-${category.id}`} category={category}/>
         )}
-      </div>
-    );
-
-
-  }
+      
+    </div>
+  )
 }
+
+
 
 export default Categories;
