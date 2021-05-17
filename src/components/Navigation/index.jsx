@@ -3,6 +3,7 @@ import './index.css';
 import Search from './../../components/Search';
 import Login from './../../components/Login';
 
+
 function Nav() {
   return (
     <div>
