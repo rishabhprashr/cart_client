@@ -3,30 +3,38 @@ import { get }  from './../../axios';
 import {useEffect,useState} from 'react';
 import {CATEGORIES} from './../../routes';
 import Category from './../../components/Category';
+import {useSelector} from 'react-redux';
+import {FetchCategories} from './../../Redux/Effects/Categories';
+
+
+
 
 function Categories() {
 
-  const [categories,setCategory] = useState();
-
+  // const [categories,setCategory] = useState();
+  
   useEffect (() => {
-    fetchCategories();
+    console.log('categories');
+    FetchCategories();
   },[]);
 
-  const fetchCategories = async () =>{
-    const data = await get(CATEGORIES);
-    // const categories = await data.json();
-    setCategory(data);
-    console.log(data);
+  // const fetchCategories = async () =>{
+  //   const data = await get(CATEGORIES);
+  //   // const categories = await data.json();
+  //   setCategory(data);
+  //   console.log(data);
 
 
-  };
+  // };
 
-
+  const data = useSelector((state) => state.categories.categories); 
   return (
+    
     <div>
       
+      {console.log(`containercategory${JSON.stringify(data)}`)};
 
-        {categories?.map((category) =>
+        {data?.map((category) =>
           <Category key={`category-${category.id}`} category={category}/>
         )}
       

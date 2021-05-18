@@ -1,11 +1,10 @@
-import React from 'react';
+import {combineReducers} from 'redux';
 
-function rootreducer() {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+import categoryReducer from './../categoryReducer';
 
-export default rootreducer;
+const rootReducer = combineReducers({
+  // Define a top-level state field named `todos`, handled by `todosReducer`
+  categories : categoryReducer
+})
+
+export default rootReducer;
