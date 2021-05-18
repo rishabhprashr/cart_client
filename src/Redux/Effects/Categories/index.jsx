@@ -1,6 +1,6 @@
 import {get} from './../../../axios';
 import {setCategory} from './../../Action/categoryActions';
-import {useDispatch} from 'react-redux';
+// import {useDispatch} from 'react-redux';
 import store from './../../store';
 
 

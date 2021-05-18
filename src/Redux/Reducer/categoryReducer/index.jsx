@@ -1,4 +1,4 @@
-import {SET_CATEGORY} from './../../Types/categoryTypes';
+import {SET_CATEGORY} from './../../Types';
 
 const initialState = {
   categories : []

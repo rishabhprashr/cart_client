@@ -1,7 +1,5 @@
 import React from 'react';
-import { get }  from './../../axios';
-import {useEffect,useState} from 'react';
-import {CATEGORIES} from './../../routes';
+import {useEffect} from 'react';
 import Category from './../../components/Category';
 import {useSelector} from 'react-redux';
 import {FetchCategories} from './../../Redux/Effects/Categories';
@@ -10,11 +8,9 @@ import {FetchCategories} from './../../Redux/Effects/Categories';
 
 
 function Categories() {
-
-  // const [categories,setCategory] = useState();
   
   useEffect (() => {
-    console.log('categories');
+    // console.log('categories');
     FetchCategories();
   },[]);
 
@@ -32,7 +28,7 @@ function Categories() {
     
     <div>
       
-      {console.log(`containercategory${JSON.stringify(data)}`)};
+      {/* {console.log(`containercategory${JSON.stringify(data)}`)}; */}
 
         {data?.map((category) =>
           <Category key={`category-${category.id}`} category={category}/>

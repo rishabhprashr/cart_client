@@ -1,4 +1,4 @@
-import {GET_CATEGORY,SET_CATEGORY} from './../../Types/categoryTypes';
+import {GET_CATEGORY,SET_CATEGORY} from './../../Types';
 
 export const getCategory = () => {
     return {

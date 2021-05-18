@@ -4,7 +4,7 @@ import RouterWrapper from '../../components/RouterWrapper';
 import React from 'react';
 import Nav from './../../components/Navigation';
 import store from './../../Redux/store';
-import { Provider, useSelector } from "react-redux";
+import { Provider} from "react-redux";
 
 function App() {
   return (
