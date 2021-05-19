@@ -1,30 +1,18 @@
 import React from 'react';
-import { get,post } from '../../axios';
-import {useEffect,useState} from 'react';
+import {post } from '../../axios';
+import {useEffect} from 'react';
 import NotFound from './../Error';
 import {CART} from './../../routes';
+import {FetchProduct} from './../../Redux/Effects/Products';
+import {useSelector} from 'react-redux';
 
 
 function ProductDetail() {
 
-  const [product,setProduct] = useState();
-
   useEffect (() => {
-    fetchProduct();
+    FetchProduct();
   },[]);
 
-  const fetchProduct = async () =>{
-    const productUrl = window.location.pathname;
-    const data = await get(productUrl);
-    // const categories = await data.json();
-    console.log(data);
-    // if (data.success)
-    try{
-      setProduct(data.data);
-    }catch(e){
-      console.log(data);
-    }
-  };
 
   const handleProduct = async () =>{
     console.log(product);
@@ -35,13 +23,13 @@ function ProductDetail() {
   }
 
 
-
-  // const { product: { id, name, price, category }} = this.state;
+  const product = useSelector((state) => state.products.product);
+  // console.log(`details${JSON.stringify(product)}`)
 
   return (
     <div>
       {product?<React.Fragment>
-        <a href={`/categories/${product?.category.id}/products`}>{product?.category.name}</a>
+        <a href={`/categories/${product?.category?.id}/products`}>{product?.category?.name}</a>
         <div>{product?.name}</div>
         <div>{product?.id}</div>
         <div>{product?.price}</div>

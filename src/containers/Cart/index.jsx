@@ -1,52 +1,19 @@
 import React from 'react';
-import {useEffect,useState} from 'react';
+import {useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import {get,post,put,destroy} from './../../axios';
-// import Cart from './../../components/Cart';
-import {CART,ORDERS} from './../../routes';
+import {post} from './../../axios';
+import {ORDERS} from './../../routes';
+import {fetchCart,handleChange,handleRemove} from './../../Redux/Effects/Cart';
+import {useSelector} from 'react-redux';
 
 function Carts() {
-
-  const [cart,setCart] = useState([]);
-  const [price,setPrice] = useState(0);
   const history = useHistory();
+  const cart = useSelector((state) => state.cart.cart);
 
   useEffect (() => {
     fetchCart();
   },[]);
 
-  const fetchCart = async () =>{
-    
-    // const categories = await data.json();
-    // console.log(data);
-    try{
-      const data = await get(CART);
-      setCart(data.data);
-      setPrice(data.totalPrice);
-    }catch(e){
-      console.log(e);
-    }
-    
-
-
-  }
-
-  const handleChange = async (e,cart_items) =>{
-  
-    const data = {"product_id":cart_items.product.id,"quantity":e.target.value};
-    const res = await put(`/cart_items/${cart_items.id}`,data);
-    fetchCart();
-    console.log(res);
-
-  }
-
-  const handleRemove = async (e) => {
-    console.log(JSON.stringify(e));
-    const res =await destroy(`/cart_items/${e}`);
-    console.log(`delete response ${res}`);
-    fetchCart();
-    console.log(res);
-  }
 
   const handleOrder = async (e) => {
     try{
@@ -59,6 +26,11 @@ function Carts() {
     }
     
   }
+
+  
+  const price = useSelector((state) => state.cart.price);
+  // console.log(`containercart${cart}`);
+  // console.log(price);
 
 
 return (

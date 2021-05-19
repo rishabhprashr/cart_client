@@ -1,34 +1,23 @@
 import React from 'react';
-import { get }  from './../../axios';
-import {useEffect,useState} from 'react';
-// import {CATEGORIES} from './../../routes';
+import {useEffect} from 'react';
 import Product from './../../components/Product';
+import {FetchProducts} from './../../Redux/Effects/Products';
+import {useSelector} from 'react-redux';
 
 function Products() {
 
-  const [products,setProducts] = useState();
-
   useEffect (() => {
-    fetchProducts();
+    FetchProducts();
   },[]);
 
-  const fetchProducts = async () =>{
-    const categoryUrl = window.location.pathname;
-    const data = await get(categoryUrl);
-    // const categories = await data.json();
-    console.log(data.data);
-    setProducts(data.data);
-    
 
-
-  };
-
-
+  const data = useSelector((state) => state.products.products);
+  console.log(`productContainer${data}`)
   return (
     <div>
       
       <div>
-        {products?.map((product) =>
+        {data?.map((product) =>
           <Product key={`product-${product.id}`} product={product}/>
         )}
       </div>
