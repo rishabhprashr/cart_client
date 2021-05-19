@@ -1,26 +1,28 @@
 import React from 'react';
 import {useState,useEffect} from 'react';
-import {get} from './../../axios';
+import {useSelector} from 'react-redux';
+import {fetchOrder} from './../../Redux/Effects/Orders';
 
 function Order() {
   
   // console.log(props);
-  const [order,setOrder] = useState();
+  const order = useSelector((state) => state.orders.order);
+  console.log(order);
 
   useEffect (() => {
     fetchOrder();
   },[]);
 
-  const fetchOrder = async() => {
-    const orderUrl = window.location.pathname;
-    try {
-      const res = await get(orderUrl);
-      console.log(res);
-      setOrder(res);
-    }catch(e) {
-      console.log(e);
-    }
-  }
+  // const fetchOrder = async() => {
+  //   const orderUrl = window.location.pathname;
+  //   try {
+  //     const res = await get(orderUrl);
+  //     console.log(res);
+  //     setOrder(res);
+  //   }catch(e) {
+  //     console.log(e);
+  //   }
+  // }
 
 
   return (
@@ -37,7 +39,7 @@ function Order() {
             <td>Price</td>
             <td>Total Price</td>
           </tr>
-          {order?.items.map((item,index) =>
+          {order?.items?.map((item,index) =>
             <tr key={index}>
               <td>{item.product.name}</td>
               <td>{item.quantity}</td>

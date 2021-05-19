@@ -1,27 +1,27 @@
 import React from 'react';
-import {useEffect,useState} from 'react';
-import {get} from './../../axios';
-// import Order from './../../components/Order';
-import {ORDERS} from './../../routes';
+import {useEffect} from 'react';
+import {fetchOrders} from './../../Redux/Effects/Orders';
+import {useSelector} from 'react-redux';
 
 
 function Orders() {
 
-  const [orders,setOrders] = useState([]);
+  const orders = useSelector((state) => state.orders.orders);
+  console.log(`orderscontainer${orders}`);
 
   useEffect (() => {
     fetchOrders();
   },[]);
 
-  const fetchOrders = async () => {
-    try{
-      const res = await get(ORDERS);
-      console.log(res);
-      setOrders(res);
-    }catch(e){
-      console.log(e);
-    }
-  };
+  // const fetchOrders = async () => {
+  //   try{
+  //     const res = await get(ORDERS);
+  //     console.log(res);
+  //     setOrders(res);
+  //   }catch(e){
+  //     console.log(e);
+  //   }
+  // };
 
 
   return (
