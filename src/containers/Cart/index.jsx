@@ -14,6 +14,7 @@ function Carts() {
     fetchCart();
   },[]);
 
+
   const handleOrder = async (e) => {
     try{
       const res = await post(ORDERS);

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useState,useEffect} from 'react';
+import {useEffect} from 'react';
 import {useSelector} from 'react-redux';
 import {fetchOrder} from './../../Redux/Effects/Orders';
 
@@ -12,17 +12,6 @@ function Order() {
   useEffect (() => {
     fetchOrder();
   },[]);
-
-  // const fetchOrder = async() => {
-  //   const orderUrl = window.location.pathname;
-  //   try {
-  //     const res = await get(orderUrl);
-  //     console.log(res);
-  //     setOrder(res);
-  //   }catch(e) {
-  //     console.log(e);
-  //   }
-  // }
 
 
   return (
@@ -43,15 +32,15 @@ function Order() {
             <tr key={index}>
               <td>{item.product.name}</td>
               <td>{item.quantity}</td>
-              <td>{item.product.price}</td>
-              <td>{item.price}</td>
+              <td>${item.product.price}</td>
+              <td>${item.price}</td>
             </tr>
           )}
           <tr>
             <td></td>
             <td></td>
             <td><h4>Bill Amount</h4></td>
-            <td><h4>{order?.totalPrice}</h4></td>
+            <td><h4>${order?.totalPrice}</h4></td>
           </tr>
 
         </tbody>
