@@ -1,7 +1,6 @@
 import React from 'react';
 import './index.css';
 import Search from './../../components/Search';
-import Login from './../../components/Login';
 
 
 function Nav() {
@@ -11,7 +10,7 @@ function Nav() {
         <div>
         <ul className="navlinks">
           <Search/>
-          {/* <Login/> */}
+          <a href={`/login`}>Login</a>
           
           <a href={'/cart_items'}>Cart</a>
           </ul>

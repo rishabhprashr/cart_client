@@ -4,15 +4,39 @@ import {useHistory} from 'react-router-dom';
 import {post} from './../../axios';
 import {ORDERS} from './../../routes';
 import {fetchCart,handleChange,handleRemove} from './../../Redux/Effects/Cart';
-import {useSelector} from 'react-redux';
+import {useSelector,useDispatch} from 'react-redux';
+import store from '../../Redux/store';
+import {setLoading} from './../../Redux/Action/cartActions';
+// import {getCart} from './../../Redux/Action/cartActions';
 
 function Carts() {
   const history = useHistory();
   const cart = useSelector((state) => state.cart.cart);
+  const loading = useSelector((state) => state.cart.loading);
+  const dispatch = useDispatch();
+  const price = useSelector((state) => state.cart.price);
+  // const cart = store.getState().cart.cart;
+  console.log(`CART${JSON.stringify(cart)}`);
+  store.subscribe((state) => {store.getState()});
+
 
   useEffect (() => {
     fetchCart();
   },[]);
+
+
+  // useEffect (() => {
+  //   const loadCart = async () => {
+  //     try{
+  //       dispatch(setLoading(true));
+  //       fetchCart();
+  //       dispatch(setLoading(false));  
+  //     }catch(e){
+  //       dispatch(setLoading(false));
+  //     }   
+  //   };
+  //   loadCart();
+  // },[]);
 
 
   const handleOrder = async (e) => {
@@ -28,7 +52,7 @@ function Carts() {
   }
 
   
-  const price = useSelector((state) => state.cart.price);
+  
   // console.log(`containercart${cart}`);
   // console.log(price);
 

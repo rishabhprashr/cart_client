@@ -1,12 +1,10 @@
 import {get,destroy,put} from './../../../axios';
-import {setCart,setPrice} from './../../Action/cartActions';
+import {setCart,setPrice,setLoading} from './../../Action/cartActions';
 import store from './../../store';
 import {CART} from './../../../routes';
 
-
-
-
 export const fetchCart = async () =>{
+  store.dispatch(setLoading(true));
   try{
     const data = await get(CART);
     store.dispatch(setCart(data.data));
@@ -14,25 +12,39 @@ export const fetchCart = async () =>{
   }catch(e){
     console.log(e);
   }
+  store.dispatch(setLoading(false));
     
 };
 
 export const handleChange = async (e,cart_items) =>{
-  
-    const data = {"product_id":cart_items.product.id,"quantity":e.target.value};
+
+  store.dispatch(setLoading(true));
+  const data = {"product_id":cart_items.product.id,"quantity":e.target.value};
+  try{
     const res = await put(`/cart_items/${cart_items.id}`,data);
-    fetchCart();
-    console.log(res);
-    // store.subscribe(() => store.getState())
-    // FetchCart();
+    store.dispatch(setCart(res.data));
+    store.dispatch(setPrice(res.totalPrice));
+  }catch(e){
+    console.log(e);
+  }
+  store.dispatch(setLoading(false));
+  // fetchCart();
+  // console.log(res);
 
 };
 
 export const handleRemove = async (e) => {
-    console.log(JSON.stringify(e));
+  store.dispatch(setLoading(true));
+  // console.log(JSON.stringify(e));
+  try{
     const res =await destroy(`/cart_items/${e}`);
-    console.log(`delete response ${res}`);
-    fetchCart();
-    console.log(res);
-    // FetchCart();
+    store.dispatch(setCart(res.data));
+    store.dispatch(setPrice(res.totalPrice));
+  }catch(e){
+    console.log(e);
+  }
+  store.dispatch(setLoading(false));
+  // console.log(`delete response ${res}`);
+  // fetchCart();
+  // console.log(res);
 };

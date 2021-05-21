@@ -6,3 +6,4 @@ export const SET_CART = 'SET_CART';
 export const SET_PRICE = 'SET_PRICE';
 export const SET_ORDERS = 'SET_ORDERS';
 export const SET_ORDER = 'SET_ORDER';
+export const LOADING = 'LOADING';

@@ -1,4 +1,4 @@
-import {get,post} from './../../../axios';
+import {get} from './../../../axios';
 import {ORDERS} from './../../../routes';
 import store from './../../store';
 import {setOrders,setOrder} from './../../Action/orderActions';
