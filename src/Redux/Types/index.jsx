@@ -8,3 +8,4 @@ export const SET_ORDERS = 'SET_ORDERS';
 export const SET_ORDER = 'SET_ORDER';
 export const LOADING = 'LOADING';
 export const SET_SEARCH = 'SET_SEARCH';
+export const SET_RESPONSE = 'SET_RESPONSE';

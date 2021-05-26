@@ -8,7 +8,11 @@ function Search() {
 
   const dispatch = useDispatch();
   const query = useSelector((state) => state.search.search);
-  useEffect(() =>{
+  const results = useSelector((state) => state.search.searchResults);
+  console.log(`searchcontainer${results}`);
+
+
+  useEffect (() => {
     fetchSearch(query);
   },[query]);
 

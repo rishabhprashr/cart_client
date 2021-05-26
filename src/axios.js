@@ -21,13 +21,6 @@ export const get = (url) => {
   return axios.get(endpoint, header).then(responseData);
 }
 
-export const search = (url, data) => {
-  const endpoint = getEndpoint(url);
-  const headers = getHeaders();
-  return axios.get(endpoint,data, headers).then(responseData);
-
-};
-
 export const put = (url, data) => {
   const endpoint = getEndpoint(url);
   const header = getHeaders();

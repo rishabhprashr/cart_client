@@ -1,4 +1,4 @@
-import {SET_SEARCH,LOADING} from './../../Types';
+import {SET_SEARCH,LOADING,SET_RESPONSE} from './../../Types';
 
 export const setLoading = (data) => {
   return {
@@ -13,3 +13,10 @@ export const setSearch = (data) => {
     value: data
   }
 };
+
+export const setResponse = (data) => {
+  return{
+    type: SET_RESPONSE ,
+    value: data
+  }
+}

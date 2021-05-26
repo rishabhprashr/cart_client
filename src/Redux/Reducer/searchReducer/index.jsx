@@ -1,8 +1,9 @@
-import {SET_SEARCH,LOADING} from './../../Types';
+import {SET_SEARCH,LOADING,SET_RESPONSE} from './../../Types';
 
 const initialState = {
   loading: false,
-  search:''
+  search:'',
+  searchResults: []
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -17,6 +18,11 @@ const searchReducer = (state = initialState, action) => {
         ...state,
         loading:action.value
       };
+    case SET_RESPONSE:
+      return{
+        ...state,
+        searchResults: action.value
+      }
     default:
       return state;
   }
