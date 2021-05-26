@@ -1,4 +1,4 @@
-import {get} from './../../../axios';
+import {get,post} from './../../../axios';
 import {ORDERS} from './../../../routes';
 import store from './../../store';
 import {setOrders,setOrder} from './../../Action/orderActions';
@@ -24,3 +24,17 @@ export const fetchOrder = async() => {
     console.log(e);
   }
 }
+
+// export const handleOrder = async (e) => {
+//   let history = useHistory();
+//     try{
+//       const res = await post(ORDERS);
+//       if (res.success){
+//         // history.push(`/orders/${res.order.id}`);
+//         store.dispatch(push(`/orders/${res.order.id}`));
+//       }
+//     }catch(e){
+//       console.log(e);
+//     }
+    
+//   }

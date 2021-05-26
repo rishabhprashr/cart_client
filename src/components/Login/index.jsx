@@ -9,15 +9,6 @@ function Login() {
   const [pwd,setPwd] = useState('');
   const history = useHistory();
 
-  // useEffect(() =>{
-  //   handleSubmit();
-  // },)
-
-  // const fetchToken = async () => {
-  //   if(token){
-  //     setToken(token);
-  //   }
-  // }
 
   const handleSubmit = async () => {
     console.log(email,pwd);

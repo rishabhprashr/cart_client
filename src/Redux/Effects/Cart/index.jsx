@@ -16,6 +16,25 @@ export const fetchCart = async () =>{
     
 };
 
+
+
+// export const fetchCart = async () =>{
+//   return async function(dispatch){
+//     dispatch(setLoading(true));
+//     console.log(`thunkdispatch`);
+//     try{
+//       const data = await get(CART);
+//       dispatch(setCart(data.data));
+//       console.log(`thunkdispatch${data.data}`);
+//       dispatch(setPrice(data.totalPrice));
+    
+//     }catch(e){
+//       console.log(e);
+//     }
+//     dispatch(setLoading(false));
+//   }
+// }
+
 export const handleChange = async (e,cart_items) =>{
 
   store.dispatch(setLoading(true));

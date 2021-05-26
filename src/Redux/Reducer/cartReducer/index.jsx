@@ -1,5 +1,5 @@
 import {SET_CART,SET_PRICE,LOADING} from './../../Types';
-import store from './../../store';
+// import store from './../../store';
 
 const initialState = {
   loading: false,
