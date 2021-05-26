@@ -7,3 +7,4 @@ export const CART = '/cart_items';
 export const ORDERS = '/orders';
 export const ORDER = '/orders/:order_id';
 export const LOGIN = `/login`;
+export const SEARCH = `products/search`;
